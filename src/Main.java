@@ -1,3 +1,6 @@
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +13,7 @@ public class Main {
         System.out.println("le résultat de la soustraction est égal à : " +(soustraction(50,8,25))); intervertir(20,100);
         soustraction(lire(),lire(),lire());
         System.out.println(scannerAsk()); **/
-        System.out.println(afficherCategorie(5));
+        System.out.println(afficherCategorie(5)); heure(new String[]{"heure"});
 
 
     }
@@ -28,8 +31,48 @@ public class Main {
         }
         return choix;
     }
+    //Ecrire une fonction qui demande à l’utilisateur un nombre dans la console compris entre 1 et 3 jusqu’à ce que la réponse convienne.
+    public static int ask(Scanner scann, int nb){
+        if (nb<=3){
+            System.out.println("Well done");
+        }
+        else {
 
-    //version switch case
+        }
+    }
+    //Exo heure: Fonction qui demande un nombre dans la console et le retourne
+    public static float lire(Scanner scanner, String mess){
+        System.out.println(mess);
+        float nbr = scanner.nextFloat();
+        return nbr;
+    }
+    public static String inOneminute(int hour, int min){
+        //test si les minutes sont égales à 59
+        if(min==59){
+            //on passe les minutes à 0
+            min=0;
+            //on passe l'heure à 0
+            if(hour==23){
+                hour=0;
+            }
+            //on incrémente l'heure
+            else{
+                hour++;
+            }
+        }
+        //on incrémente les minutes
+        else{
+            min++;
+        }
+        return "Dans une minute il sera :"+ hour+":"+min;
+    }
+    //Exo heure: afficher l'heure en console pour la minute d'avant
+    public static void heure(String[] args) {
+        Instant instant = Instant.now ();
+        Instant instantMinEarlier = instant.minus ( 1 , ChronoUnit.MINUTES );
+
+        System.out.println("Il y a une minute il etait : " + instantMinEarlier);
+    }
 
     public void categorieAvecSwitch(int choix){
 
@@ -76,7 +119,7 @@ public class Main {
         return (prixHt+quantité)/tauxTva;
     }
 
-    /**instancier un objet Scanner : permet de récupérer le prochain élément de la console
+    //instancier un objet Scanner : permet de récupérer le prochain élément de la console
     Scanner scanner = new Scanner(System.in);
     //affichage d'une chaine dans la console
         System.out.println("Saisir un nombre");
@@ -84,8 +127,8 @@ public class Main {
     int nbr = scanner.nextInt();
     //affichage dans la console du résultat
         System.out.println("le nombre saisi est : ");
-    /**Exercice 2 fonctions :
-    Ecrire une fonction qui va s’appeler soustraction et qui va prendre en paramètre 3 entiers i, j et k et va retourner la soustraction des nombres en entrée.
+    //Exercice 2 fonctions :
+    /**Ecrire une fonction qui va s’appeler soustraction et qui va prendre en paramètre 3 entiers i, j et k et va retourner la soustraction des nombres en entrée.
             NB :* la fonction sera statique **/
 
     public static int soustraction (int i, int j, int k){
